@@ -27,7 +27,11 @@ public class OrderController {
     public String order(Model model){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) authentication.getPrincipal();
-
+        try {
+            throw new Exception("sadjnasiufndwigfwiuh");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         model.addAttribute("restaurants", customerRepository.getRestaurants());
         model.addAttribute("addresses", orderRepository.getAddresses(user.getId()));
         return "order";
