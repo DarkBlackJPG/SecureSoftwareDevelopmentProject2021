@@ -73,7 +73,7 @@
 **Linija/Linije slabosti**: 27
 
 **Deo koda**:
-```
+```java
 @Override
 
 protected void configure(HttpSecurity http) throws Exception {
@@ -110,7 +110,7 @@ protected void configure(HttpSecurity http) throws Exception {
 **Linija/Linije slabosti**: 87
 
 **Deo koda**:
-```
+```java
 public Object getRestaurant(String id) {
 
 String query = "SELECT r.id, r.name, r.address, rt.name  FROM restaurant AS r JOIN restaurant_type AS rt ON r.typeId = rt.id WHERE r.id=" + id;
@@ -140,7 +140,7 @@ try (Connection connection = dataSource.getConnection();
 **Linija/Linije slabosti**: 104
 
 **Deo koda**:
-```
+```java
 public void deleteRestaurant(int id) {
 
     String query = "DELETE FROM restaurant WHERE id=" + id;
@@ -173,7 +173,7 @@ public void deleteRestaurant(int id) {
 **Linija/Linije slabosti**: 115
 
 **Deo koda**:
-```
+```java
 public void updateRestaurant(RestaurantUpdate restaurantUpdate) {
 
     String query = "UPDATE restaurant SET name = '" + restaurantUpdate.getName() + "', address='" + restaurantUpdate.getAddress() + "', typeId =" + restaurantUpdate.getRestaurantType() + " WHERE id =" + restaurantUpdate.getId();
@@ -206,7 +206,7 @@ public void updateRestaurant(RestaurantUpdate restaurantUpdate) {
 **Linija/Linije slabosti**: 126
 
 **Deo koda**:
-```
+```java
 public Customer getCustomer(String id) {
 
     String sqlQuery = "SELECT id, username, password FROM users WHERE id=" + id;
@@ -235,7 +235,7 @@ public Customer getCustomer(String id) {
 **Linija/Linije slabosti**: 151
 
 **Deo koda**:
-```
+```java
 public void deleteCustomer(String id) {
 
     String query = "DELETE FROM users WHERE id=" + id;
@@ -268,7 +268,7 @@ public void deleteCustomer(String id) {
 **Linija/Linije slabosti**: 162
 
 **Deo koda**:
-```
+```java
 public void updateCustomer(CustomerUpdate customerUpdate) {
 
     String query = "UPDATE users SET username = '" + customerUpdate.getUsername() + "', password='" + customerUpdate.getPassword() + "' WHERE id =" + customerUpdate.getId();
@@ -302,7 +302,7 @@ public void updateCustomer(CustomerUpdate customerUpdate) {
 **Linija/Linije slabosti**: 172
 
 **Deo koda**:
-```
+```java
 public List<Address> getAddresses(String id) {
 
     String sqlQuery = "SELECT id, name FROM address WHERE userId=" + id;
@@ -334,7 +334,7 @@ public List<Address> getAddresses(String id) {
 **Linija/Linije slabosti**: 196
 
 **Deo koda**:
-```
+```java
 public void deleteCustomerAddress(int id) {
 
     String query = "DELETE FROM address WHERE id=" + id;
@@ -368,7 +368,7 @@ public void deleteCustomerAddress(int id) {
 **Linija/Linije slabosti**: 207
 
 **Deo koda**:
-```
+```java
 public void updateCustomerAddress(Address address) {
 
     String query = "UPDATE address SET name = '" + address.getName() + "' WHERE id =" + address.getId();
@@ -402,7 +402,7 @@ public void updateCustomerAddress(Address address) {
 **Linija/Linije slabosti**: 218
 
 **Deo koda**:
-```
+```java
 public void putCustomerAddress(NewAddress newAddress) {
 
         String query = "INSERT INTO address (name, userId) VALUES ('"+newAddress.getName()+"' , "+newAddress.getUserId()+")";
@@ -437,7 +437,7 @@ public void putCustomerAddress(NewAddress newAddress) {
 **Linija/Linije slabosti**: 56
 
 **Deo koda**:
-```
+```java
 public ViewableDelivery getDelivery(String id) {
 
     String sqlQuery = "SELECT d.id, d.isDone, d.date, d.comment, u.username, r.name, rt.name, a.name FROM delivery AS d JOIN users AS u ON d.userId = u.id JOIN restaurant as r ON d.restaurantId = r.id JOIN address AS a ON d.addressId = a.id JOIN restaurant_type AS rt ON r.typeId= rt.id WHERE d.id = " + id;
@@ -467,7 +467,7 @@ public ViewableDelivery getDelivery(String id) {
 **Linija/Linije slabosti**: 74
 
 **Deo koda**:
-```
+```java
 List<DeliveryDetail> details = new ArrayList<>();
 
 String sqlQuery = "SELECT di.id, di.amount, f.name, f.price FROM delivery_item AS di JOIN food AS f ON di.foodId = f.id WHERE deliveryId = " + id;
@@ -497,7 +497,7 @@ try (Connection connection = dataSource.getConnection();
 **Linija/Linije slabosti**: 117
 
 **Deo koda**:
-```
+```java
                 + "OR UPPER(r.name) LIKE UPPER('%" + searchQuery + "%')"
 
                 + "OR UPPER(rt.name) LIKE UPPER('%" + searchQuery + "%')"
@@ -532,7 +532,7 @@ return cars;
 **Linija/Linije slabosti**:  27
 
 **Deo koda**:
-```
+```java
 public HashedUser findUser(String username) {
 
     String sqlQuery = "select passwordHash, salt, totpKey from hashedUsers where username = '" + username + "'";
@@ -566,7 +566,7 @@ public HashedUser findUser(String username) {
 **Linija/Linije slabosti**: 30
 
 **Deo koda**:
-```
+```java
 public List<Food> getMenu(int id) {
 
     List<Food> menu = new ArrayList<>();
@@ -600,7 +600,7 @@ public List<Food> getMenu(int id) {
 **Linija/Linije slabosti**: 56
 
 **Deo koda**:
-```
+```java
         "values (FALSE, " + userId + ", " + newOrder.getRestaurantId() + ", " + newOrder.getAddress() + "," +
 
         "'" + date.getYear() + "-" + date.getMonthValue() + "-" + date.getDayOfMonth() + "', '" + newOrder.getComment() + "')";
@@ -632,7 +632,7 @@ try {
 **Linija/Linije slabosti**: 59
 
 **Deo koda**:
-```
+```java
 Connection connection = dataSource.getConnection();
 
 Statement statement = connection.createStatement();
@@ -662,7 +662,7 @@ if (rs.next()) {
 **Linija/Linije slabosti**: 76
 
 **Deo koda**:
-```
+```java
             }
 
             deliveryItem += "(" + item.getAmount() + ", " + item.getFoodId() + ", " + deliveryId + ")";
@@ -696,7 +696,7 @@ if (rs.next()) {
 **Linija/Linije slabosti**: 91
 
 **Deo koda**:
-```
+```java
 public Object getAddresses(int userId) {
 
     List<Address> addresses = new ArrayList<>();
@@ -730,7 +730,7 @@ public Object getAddresses(int userId) {
 **Linija/Linije slabosti**: 32
 
 **Deo koda**:
-```
+```java
 public List<Permission> findByRoleId(int roleId) {
 
     List<Permission> permissions = new ArrayList<>();
@@ -765,7 +765,7 @@ public List<Permission> findByRoleId(int roleId) {
 **Linija/Linije slabosti**: 32
 
 **Deo koda**:
-```
+```java
 public List<Role> findByUserId(int userId) {
 
     List<Role> roles = new ArrayList<>();
@@ -801,7 +801,7 @@ public List<Role> findByUserId(int userId) {
 **Linija/Linije slabosti**: 29
 
 **Deo koda**:
-```
+```java
 public User findUser(String username) {
 
     String query = "SELECT id, username, password FROM users WHERE username='" + username + "'";
@@ -835,7 +835,7 @@ public User findUser(String username) {
 **Linija/Linije slabosti**: 46
 
 **Deo koda**:
-```
+```java
 public boolean validCredentials(String username, String password) {
 
     String query = "SELECT username FROM users WHERE username='" + username + "' AND password='" + password + "'";
@@ -869,7 +869,7 @@ public boolean validCredentials(String username, String password) {
 **Linija/Linije slabosti**: 59
 
 **Deo koda**:
-```
+```java
 public void delete(int userId) {
 
     String query = "DELETE FROM users WHERE id = " + userId;
@@ -909,7 +909,7 @@ public void delete(int userId) {
 **Linija/Linije slabosti**: 47
 
 **Deo koda**:
-```
+```java
         while (rs.next()) {
 
             customers.add(createCustomer(rs));
@@ -942,7 +942,7 @@ private com.zuehlke.securesoftwaredevelopment.domain.Customer createCustomer(Res
 **Linija/Linije slabosti**: 68
 
 **Deo koda**:
-```
+```java
         while (rs.next()) {
 
             restaurants.add(createRestaurant(rs));
@@ -975,7 +975,7 @@ private Restaurant createRestaurant(ResultSet rs) throws SQLException {
 **Linija/Linije slabosti**: 94
 
 **Deo koda**:
-```
+```java
             if (rs.next()) {
 
                 return createRestaurant(rs);
@@ -1008,7 +1008,7 @@ private Restaurant createRestaurant(ResultSet rs) throws SQLException {
 **Linija/Linije slabosti**:  106
 
 **Deo koda**:
-```
+```java
     try (Connection connection = dataSource.getConnection();
 
             Statement statement = connection.createStatement()
@@ -1043,7 +1043,7 @@ public void updateRestaurant(RestaurantUpdate restaurantUpdate) {
 **Linija/Linije slabosti**:  117
 
 **Deo koda**:
-```
+```java
     try (Connection connection = dataSource.getConnection();
 
             Statement statement = connection.createStatement()
@@ -1076,7 +1076,7 @@ public Customer getCustomer(String id) {
 **Linija/Linije slabosti**: 133
 
 **Deo koda**:
-```
+```java
         if (rs.next()) {
 
             return createCustomerWithPassword(rs);
@@ -1109,7 +1109,7 @@ private Customer createCustomerWithPassword(ResultSet rs) throws SQLException {
 **Linija/Linije slabosti**:  153
 
 **Deo koda**:
-```
+```java
     try (Connection connection = dataSource.getConnection();
 
             Statement statement = connection.createStatement()
@@ -1144,7 +1144,7 @@ public void updateCustomer(CustomerUpdate customerUpdate) {
 **Linija/Linije slabosti**: 164
 
 **Deo koda**:
-```
+```java
     try (Connection connection = dataSource.getConnection();
 
             Statement statement = connection.createStatement()
@@ -1179,7 +1179,7 @@ public List<Address> getAddresses(String id) {
 **Linija/Linije slabosti**: 180
 
 **Deo koda**:
-```
+```java
         while (rs.next()) {
 
             addresses.add(createAddress(rs));
@@ -1212,7 +1212,7 @@ private Address createAddress(ResultSet rs) throws SQLException {
 **Linija/Linije slabosti**: 198
 
 **Deo koda**:
-```
+```java
     try (Connection connection = dataSource.getConnection();
 
             Statement statement = connection.createStatement()
@@ -1247,7 +1247,7 @@ public void updateCustomerAddress(Address address) {
 **Linija/Linije slabosti**: 209
 
 **Deo koda**:
-```
+```java
     try (Connection connection = dataSource.getConnection();
 
             Statement statement = connection.createStatement()
@@ -1282,7 +1282,7 @@ public void putCustomerAddress(NewAddress newAddress) {
 **Linija/Linije slabosti**: 220
 
 **Deo koda**:
-```
+```java
         try (Connection connection = dataSource.getConnection();
 
              Statement statement = connection.createStatement()
@@ -1315,7 +1315,7 @@ public void putCustomerAddress(NewAddress newAddress) {
 **Linija/Linije slabosti**: 33
 
 **Deo koda**:
-```
+```java
         while (rs.next()) {
 
             deliveries.add(createDelivery(rs));
@@ -1346,7 +1346,7 @@ public void putCustomerAddress(NewAddress newAddress) {
 **Linija/Linije slabosti**:  63
 
 **Deo koda**:
-```
+```java
         if (rs.next()) {
 
             return createDelivery(rs);
@@ -1379,7 +1379,7 @@ public List<DeliveryDetail> getDeliveryDetails(String id) {
 **Linija/Linije slabosti**: 81
 
 **Deo koda**:
-```
+```java
         while (rs.next()) {
 
             details.add(createDetail(rs));
@@ -1410,7 +1410,7 @@ public List<DeliveryDetail> getDeliveryDetails(String id) {
 **Linija/Linije slabosti**: 35
 
 **Deo koda**:
-```
+```java
             String salt = rs.getString(2);
 
             String totpKey = rs.getString(3);
@@ -1445,7 +1445,7 @@ public void saveTotpKey(String username, String totpKey) {
 **Linija/Linije slabosti**: 49
 
 **Deo koda**:
-```
+```java
             statement.setString(1, totpKey);
 
             statement.setString(2, username);
@@ -1476,7 +1476,7 @@ public void saveTotpKey(String username, String totpKey) {
 **Linija/Linije slabosti**: 36
 
 **Deo koda**:
-```
+```java
         while (rs.next()) {
 
             menu.add(createFood(rs));
@@ -1507,7 +1507,7 @@ public void saveTotpKey(String username, String totpKey) {
 **Linija/Linije slabosti**: 80
 
 **Deo koda**:
-```
+```java
             System.out.println(sqlQuery);
 
             statement.executeUpdate(sqlQuery);
@@ -1536,7 +1536,7 @@ public void saveTotpKey(String username, String totpKey) {
 **Linija/Linije slabosti**: 97
 
 **Deo koda**:
-```
+```java
         while (rs.next()) {
 
             addresses.add(createAddress(rs));
@@ -1569,7 +1569,7 @@ private Address createAddress(ResultSet rs) throws SQLException {
 **Linija/Linije slabosti**: 39
 
 **Deo koda**:
-```
+```java
                 int id = rs.getInt(1);
 
                 String name = rs.getString(2);
@@ -1604,7 +1604,7 @@ private Address createAddress(ResultSet rs) throws SQLException {
 **Linija/Linije slabosti**: 39
 
 **Deo koda**:
-```
+```java
                 int id = rs.getInt(1);
 
                 String name = rs.getString(2);
@@ -1639,7 +1639,7 @@ private Address createAddress(ResultSet rs) throws SQLException {
 **Linija/Linije slabosti**: 37
 
 **Deo koda**:
-```
+```java
             String username1 = rs.getString(2);
 
             String password = rs.getString(3);
@@ -1674,7 +1674,7 @@ public boolean validCredentials(String username, String password) {
 **Linija/Linije slabosti**: 49
 
 **Deo koda**:
-```
+```java
     try (Connection connection = dataSource.getConnection();
 
             Statement statement = connection.createStatement();
@@ -1709,7 +1709,8 @@ public void delete(int userId) {
 **Linija/Linije slabosti**: 61
 
 **Deo koda**:
-```
+
+```java
         try (Connection connection = dataSource.getConnection();
 
              Statement statement = connection.createStatement();

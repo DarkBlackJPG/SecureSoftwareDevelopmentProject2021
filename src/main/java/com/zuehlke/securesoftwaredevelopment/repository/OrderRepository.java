@@ -52,7 +52,7 @@ public class OrderRepository {
                 "'" + date.getYear() + "-" + date.getMonthValue() + "-" + date.getDayOfMonth() + "', '" + newOrder.getComment() + "')";
         try {
             Connection connection = dataSource.getConnection();
-            Statement statement = connection.createStatement();
+            Statement statement = connection.prepareStatement(sqlQuery);
             statement.executeUpdate(sqlQuery);
 
             sqlQuery = "SELECT MAX(id) FROM delivery";
