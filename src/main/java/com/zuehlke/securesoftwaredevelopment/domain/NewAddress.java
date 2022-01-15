@@ -24,4 +24,12 @@ public class NewAddress {
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
+    @Override
+    public String toString() {
+        return "NewAddress{" +
+                "name='" + name + '\'' +
+                ", userId=" + userId +
+                '}';
+    }
 }

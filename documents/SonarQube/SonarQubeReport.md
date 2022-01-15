@@ -95,7 +95,7 @@ protected void configure(HttpSecurity http) throws Exception {
 
 **Ishod**: True Positive
 
-**Pojasnjenje**: SonarQube je detektovao ispravno slabost ( ```csrf.disable()``` ), ali, ukoliko smo mi _custom_ implementirali CSRF zastitu, ovo moze da se zanemari
+**Pojasnjenje**: SonarQube je detektovao ispravno slabost ( ```csrf.disable()``` ), s obzirom da je csrf disable-ovan, neophodno je da mi sami odradimo implementaciju pracenja CSRF tokena kako bismo izbegli napad
 
 ----
 
@@ -900,7 +900,7 @@ public void delete(int userId) {
 
 ## Insecure Configuration
 
-- Pronadjeno ukupno potencijalnih 25 slabosti
+- Pronadjeno ukupno potencijalnih 25 nesigurnih konfiguracija
 
 ### Insecure Configuration - Slabost 1
 
@@ -930,9 +930,11 @@ private com.zuehlke.securesoftwaredevelopment.domain.Customer createCustomer(Res
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
 
 
 ### Insecure Configuration - Slabost 2
@@ -963,9 +965,11 @@ private Restaurant createRestaurant(ResultSet rs) throws SQLException {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
 
 
 ### Insecure Configuration - Slabost 3
@@ -996,9 +1000,12 @@ private Restaurant createRestaurant(ResultSet rs) throws SQLException {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 4
@@ -1031,9 +1038,12 @@ public void updateRestaurant(RestaurantUpdate restaurantUpdate) {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 5
@@ -1064,9 +1074,12 @@ public Customer getCustomer(String id) {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 6
@@ -1097,9 +1110,12 @@ private Customer createCustomerWithPassword(ResultSet rs) throws SQLException {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 7
@@ -1132,9 +1148,12 @@ public void updateCustomer(CustomerUpdate customerUpdate) {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 8
@@ -1167,9 +1186,12 @@ public List<Address> getAddresses(String id) {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 9
@@ -1200,9 +1222,12 @@ private Address createAddress(ResultSet rs) throws SQLException {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 10
@@ -1235,9 +1260,12 @@ public void updateCustomerAddress(Address address) {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 11
@@ -1270,9 +1298,12 @@ public void putCustomerAddress(NewAddress newAddress) {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 12
@@ -1303,9 +1334,12 @@ public void putCustomerAddress(NewAddress newAddress) {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 13
@@ -1334,9 +1368,12 @@ public void putCustomerAddress(NewAddress newAddress) {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 14
@@ -1367,9 +1404,12 @@ public List<DeliveryDetail> getDeliveryDetails(String id) {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 15
@@ -1398,9 +1438,12 @@ public List<DeliveryDetail> getDeliveryDetails(String id) {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 16
@@ -1433,9 +1476,12 @@ public void saveTotpKey(String username, String totpKey) {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 17
@@ -1464,9 +1510,12 @@ public void saveTotpKey(String username, String totpKey) {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 18
@@ -1495,9 +1544,12 @@ public void saveTotpKey(String username, String totpKey) {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 19
@@ -1524,9 +1576,12 @@ public void saveTotpKey(String username, String totpKey) {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 20
@@ -1557,9 +1612,12 @@ private Address createAddress(ResultSet rs) throws SQLException {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 21
@@ -1592,9 +1650,12 @@ private Address createAddress(ResultSet rs) throws SQLException {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 22
@@ -1627,9 +1688,12 @@ private Address createAddress(ResultSet rs) throws SQLException {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 23
@@ -1662,9 +1726,12 @@ public boolean validCredentials(String username, String password) {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 24
@@ -1697,9 +1764,12 @@ public void delete(int userId) {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
+
 
 
 ### Insecure Configuration - Slabost 25
@@ -1731,7 +1801,9 @@ public void delete(int userId) {
 
 ```
 
-**Ishod**: 
+**Ishod**: True positive
 
-**Pojasnjenje**: 
+**Pojasnjenje**: U ovakvim situacijama je preporucljivo da se koristi Logger ili Auditing, u zavisnosti od zahteva projekta. Ovaj propust je dobro dokumentovan:
+
+[CVE-2018-1999007](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1999007), [CVE-2015-5306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5306), [CVE-2013-2006](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2006)
 

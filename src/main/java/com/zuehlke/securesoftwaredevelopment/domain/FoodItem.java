@@ -24,4 +24,12 @@ public class FoodItem {
     public void setFoodId(Integer foodId) {
         this.foodId = foodId;
     }
+
+    @Override
+    public String toString() {
+        return "FoodItem{" +
+                "amount=" + amount +
+                ", foodId=" + foodId +
+                '}';
+    }
 }

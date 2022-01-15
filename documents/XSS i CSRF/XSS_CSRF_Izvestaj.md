@@ -191,7 +191,7 @@ Prvo treba da se izmeni malo kod napadaca. Server odbija zahteve jer ocekuje da 
 
 I nakon ulogovanja i pokusaja izvrsavanja napada, dobijamo sledeci error:
 
-![Forbidden](C:\Users\Stefan Teslic\IdeaProjects\SecureSoftwareDevelopmentProject2021\documents\XSS i CSRF\CSRF.png)
+![Forbidden](CSRF.png)
 
 Ista ova zastita je uradjena i za brisanje korisnika, dodavanje adresa i brisanje adresa.
 
@@ -249,4 +249,4 @@ function updateSearchTerm(searchQuery) {
 
 ### Testiranje
 
-![Test](C:\Users\Stefan Teslic\IdeaProjects\SecureSoftwareDevelopmentProject2021\documents\XSS i CSRF\XSS.png)
+![Test](XSS.png)

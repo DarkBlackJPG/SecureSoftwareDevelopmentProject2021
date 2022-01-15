@@ -1,6 +1,8 @@
 package com.zuehlke.securesoftwaredevelopment.domain;
 
 
+import java.util.Arrays;
+
 public class NewOrder {
     Integer restaurantId;
     String comment;
@@ -45,5 +47,15 @@ public class NewOrder {
 
     public void setAddress(Integer address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "NewOrder{" +
+                "restaurantId=" + restaurantId +
+                ", comment='" + comment + '\'' +
+                ", address=" + address +
+                ", items=" + Arrays.toString(items) +
+                '}';
     }
 }

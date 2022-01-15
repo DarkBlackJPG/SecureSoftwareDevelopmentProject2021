@@ -2,6 +2,7 @@ package com.zuehlke.securesoftwaredevelopment.repository;
 
 import com.zuehlke.securesoftwaredevelopment.domain.DeliveryDetail;
 import com.zuehlke.securesoftwaredevelopment.domain.ViewableDelivery;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
@@ -29,8 +30,8 @@ public class DeliveryRepository {
                 deliveries.add(createDelivery(rs));
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }  catch (SQLException e) {
+            LoggerFactory.getLogger(OrderRepository.class).warn(String.format("An error occurred while fetching all deliveries! Message: %s", e.getMessage()));
         }
         return deliveries;
     }
@@ -59,8 +60,8 @@ public class DeliveryRepository {
                 return createDelivery(rs);
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }  catch (SQLException e) {
+            LoggerFactory.getLogger(OrderRepository.class).warn(String.format("An error occurred while fetching delivery [%s]! Message: %s", id, e.getMessage()));
         }
         return null;
     }
@@ -77,8 +78,8 @@ public class DeliveryRepository {
                 details.add(createDetail(rs));
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }  catch (SQLException e) {
+            LoggerFactory.getLogger(OrderRepository.class).warn(String.format("An error occurred while fetching delivery details for id [%s]! Message: %s",id, e.getMessage()));
         }
         return details;
     }
@@ -118,6 +119,8 @@ public class DeliveryRepository {
             while (rs.next()) {
                 cars.add(createDelivery(rs));
             }
+        }  catch (SQLException e) {
+            LoggerFactory.getLogger(OrderRepository.class).warn(String.format("An error occurred while executing delivery search! Message: %s", e.getMessage()));
         }
         return cars;
     }

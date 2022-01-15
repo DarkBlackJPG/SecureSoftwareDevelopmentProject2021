@@ -1,13 +1,11 @@
 package com.zuehlke.securesoftwaredevelopment.repository;
 
 import com.zuehlke.securesoftwaredevelopment.domain.*;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +30,8 @@ public class OrderRepository {
                 menu.add(createFood(rs));
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }  catch (SQLException e) {
+            LoggerFactory.getLogger(OrderRepository.class).warn(String.format("An error occurred while selecting fetching the menu! Message: %s", e.getMessage()));
         }
 
         return menu;
@@ -47,14 +45,21 @@ public class OrderRepository {
 
     public void insertNewOrder(NewOrder newOrder, int userId) {
         LocalDate date = LocalDate.now();
-        String sqlQuery = "INSERT INTO delivery (isDone, userId, restaurantId, addressId, date, comment)" +
-                "values (FALSE, " + userId + ", " + newOrder.getRestaurantId() + ", " + newOrder.getAddress() + "," +
-                "'" + date.getYear() + "-" + date.getMonthValue() + "-" + date.getDayOfMonth() + "', '" + newOrder.getComment() + "')";
-        try {
-            Connection connection = dataSource.getConnection();
-            Statement statement = connection.prepareStatement(sqlQuery);
-            statement.executeUpdate(sqlQuery);
+        String sqlQuery = "INSERT INTO delivery (isDone, userId, restaurantId, addressId, date, comment) VALUES (FALSE, ?, ?, ?, ?, ?)";
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
+            statement.setInt(1, userId);
+            statement.setInt(2, newOrder.getRestaurantId());
+            statement.setInt(3, newOrder.getAddress());
+            statement.setString(4, date.getYear() + "-" + date.getMonthValue() + "-" + date.getDayOfMonth());
+            statement.setString(5, newOrder.getComment());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            LoggerFactory.getLogger(OrderRepository.class).warn(String.format("An error occurred while trying to create new order! Message: %s", e.getMessage()));
+        }
 
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
             sqlQuery = "SELECT MAX(id) FROM delivery";
             ResultSet rs = statement.executeQuery(sqlQuery);
 
@@ -77,7 +82,7 @@ public class OrderRepository {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LoggerFactory.getLogger(OrderRepository.class).warn(String.format("An error occurred while trying to insert order items! Message: %s", e.getMessage()));
         }
 
 
@@ -94,7 +99,7 @@ public class OrderRepository {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LoggerFactory.getLogger(OrderRepository.class).warn(String.format("An error occurred while selecting addresses for user! Message: %s", e.getMessage()));
         }
         return addresses;
     }

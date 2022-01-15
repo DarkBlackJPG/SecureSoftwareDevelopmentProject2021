@@ -43,8 +43,8 @@ public class CustomerRepository {
                 customers.add(createCustomer(rs));
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }  catch (SQLException e) {
+            LoggerFactory.getLogger(OrderRepository.class).warn(String.format("An error occurred while fetching customers! Message: %s", e.getMessage()));
         }
         return customers;
     }
@@ -64,8 +64,8 @@ public class CustomerRepository {
                 restaurants.add(createRestaurant(rs));
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }  catch (SQLException e) {
+            LoggerFactory.getLogger(OrderRepository.class).warn(String.format("An error occurred while fetching restaurants! Message: %s", e.getMessage()));
         }
         return restaurants;
     }
@@ -90,8 +90,8 @@ public class CustomerRepository {
                 return createRestaurant(rs);
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }  catch (SQLException e) {
+            LoggerFactory.getLogger(OrderRepository.class).warn(String.format("An error occurred while fetching a restaurant with id [%s]! Message: %s", id, e.getMessage()));
         }
         return null;
     }
@@ -113,8 +113,8 @@ public class CustomerRepository {
              Statement statement = connection.createStatement()
         ) {
             statement.executeUpdate(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }  catch (SQLException e) {
+            LoggerFactory.getLogger(OrderRepository.class).warn(String.format("An error occurred while trying restaurant update! Message: %s", e.getMessage()));
         }
 
     }
@@ -129,8 +129,8 @@ public class CustomerRepository {
                 return createCustomerWithPassword(rs);
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }  catch (SQLException e) {
+            LoggerFactory.getLogger(OrderRepository.class).warn(String.format("An error occurred while fetching customer with id [%s]! Message: %s",id, e.getMessage()));
         }
         return null;
     }
@@ -149,8 +149,8 @@ public class CustomerRepository {
              Statement statement = connection.createStatement()
         ) {
             statement.executeUpdate(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }  catch (SQLException e) {
+            LoggerFactory.getLogger(OrderRepository.class).warn(String.format("An error occurred while deleting customer with id ['%s']! Message: %s", id, e.getMessage()));
         }
     }
 
@@ -160,8 +160,8 @@ public class CustomerRepository {
              Statement statement = connection.createStatement()
         ) {
             statement.executeUpdate(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }  catch (SQLException e) {
+            LoggerFactory.getLogger(OrderRepository.class).warn(String.format("An error occurred while updating customer [%d]! Message: %s", customerUpdate.getId(), e.getMessage()));
         }
     }
 
@@ -176,8 +176,8 @@ public class CustomerRepository {
                 addresses.add(createAddress(rs));
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }  catch (SQLException e) {
+            LoggerFactory.getLogger(OrderRepository.class).warn(String.format("An error occurred while fetching addresses! Message: %s", e.getMessage()));
         }
         return addresses;
     }
@@ -194,8 +194,8 @@ public class CustomerRepository {
              Statement statement = connection.createStatement()
         ) {
             statement.executeUpdate(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }  catch (SQLException e) {
+            LoggerFactory.getLogger(OrderRepository.class).warn(String.format("An error occurred while deleting customer with id [%d]! Message: %s", id, e.getMessage()));
         }
     }
 
@@ -205,8 +205,8 @@ public class CustomerRepository {
              Statement statement = connection.createStatement()
         ) {
             statement.executeUpdate(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }  catch (SQLException e) {
+            LoggerFactory.getLogger(OrderRepository.class).warn(String.format("An error occurred while updating customer address! Message: %s", e.getMessage()));
         }
     }
 
@@ -216,8 +216,8 @@ public class CustomerRepository {
              Statement statement = connection.createStatement()
         ) {
             statement.executeUpdate(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }  catch (SQLException e) {
+            LoggerFactory.getLogger(OrderRepository.class).warn(String.format("An error occurred while updating customer address! Message: %s", e.getMessage()));
         }
     }
 }

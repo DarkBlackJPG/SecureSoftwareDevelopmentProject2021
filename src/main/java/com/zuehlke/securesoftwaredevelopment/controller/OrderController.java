@@ -1,5 +1,6 @@
 package com.zuehlke.securesoftwaredevelopment.controller;
 
+import com.zuehlke.securesoftwaredevelopment.config.AuditLogger;
 import com.zuehlke.securesoftwaredevelopment.domain.Food;
 import com.zuehlke.securesoftwaredevelopment.domain.NewOrder;
 import com.zuehlke.securesoftwaredevelopment.domain.User;
@@ -39,7 +40,7 @@ public class OrderController {
     @ResponseBody
     @PreAuthorize("hasAuthority('ORDER_FOOD')")
     public List<Food> getMenu(@RequestParam(name="id") String id){
-        int identificator = Integer.valueOf(id);
+        int identificator = Integer.parseInt(id);
         return orderRepository.getMenu(identificator);
     }
 
@@ -50,6 +51,7 @@ public class OrderController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) authentication.getPrincipal();
         orderRepository.insertNewOrder(newOrder, user.getId());
+        AuditLogger.getAuditLogger(OrderController.class).audit(String.format("User \"%s\" has made a new order: %s", user.getUsername(), newOrder));
         return "";
     }
 }
